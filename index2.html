@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Simple Form</title>
+    <style>
+      table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 20px;
+        }
+       table, th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+    </style>
+  </head>
+  <body>
+    <center><h1>Simple Form </h1></center>
+    
+  <div style="position: absolute; left: 20px;">
+    <form id="dataForm" onsubmit="validateForm()" >
+      <label for="firstname">First Name*:</label>
+      <input type="text" id="fname" name="First name" placeholder="Enter Your First Name" style="position: relative; left: 5px;" required>
+      <br>
+      <label for="Lastname"  style="position: relative; top: 20px;">Last Name*:</label>
+      <input type="text" id="lname" name="Last name" placeholder="Enter Your Last Name" style="position: relative; top: 20px; left: 5px;" required>
+      <br>
+      <label for="phoneNumber" style="position: relative; top:40px;" >Contact No*:</label>
+      <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="Enter your Number" style="position: relative; top: 40px;" required> 
+      <br>
+      <label for="mail"  style="position: relative; top: 60px;">Email ID:</label>
+      <input type="email" id="mail" name="mail" placeholder="Enter Your Mail ID" style="position: relative; top: 60px; left: 30px;" required>
+      <br>
+      <p style="position: relative; top: 80px;">
+        <label for="gender">Gender:</label>
+        <span style="position: relative; left: 35px;">
+          <input type="radio" id="male" name="gender" value="Male" > 
+          <label for="male">Male</label>
+          <input type="radio" id="female" name="gender" value="Female" >
+          <label for="female"> Female</label>
+        </span>
+      </p>
+      <span style="position: relative; top: 80px;">
+        <label for="hobbies">Hobbies: </label>
+        <span style="position: relative; left: 30px;">
+          <input type="checkbox" name="hobbies" id="reading" value="Reading">
+          <label for="reading">Reading</label>
+          <input type="checkbox" name="hobbies" id="playing" value="Playing">
+          <label for="reading">Playing</label>
+          <input type="checkbox" name="hobbies" id="watchingtv" value="Watching TV">
+          <label for="reading">Watching TV</label>
+        </span>
+      </span>
+      
+
+     <div style="position: relative; top: 100px;">
+      <label for="country">Select Country:</label>
+      <select id="country" onchange="updateStateDropdown()" required>
+          <option value="">--Select a Country--</option>
+          <option value="India">India</option>
+          <option value="Australia">Australia</option>
+          <option value="Canada">Canada</option>
+      </select>
+      <br>
+      <span style="position: relative; top: 20px;">
+        <label for="state">Select State:</label>
+        <span style="position: relative; left: 20px;">
+          <select id="state" required>
+            <option value="">--Select a State--</option>
+        </span>
+      </span>
+      </select>
+  
+     </div>
+     
+     <input type="submit" value="Submit" style="position: relative; top: 150px; left: 50px;">
+     <input type="reset" value="Clear" style="position: relative; top: 150px; left: 50px;">
+
+  </form>
+  </div>
+  
+    <table id="dataTable" style="position: absolute; top: 500px;" >
+    <thead>
+        <tr>
+            <th>Full Name</th>
+            <th>Contact No</th>
+            <th>E-mail</th>
+            <th>Gender</th>
+            <th>Hobbies</th>
+            <th>Country</th>
+            <th>State</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody id="dataBody">
+        
+      </tbody>
+    </table> 
+  
+    <script src="form.js"></script>
+
+  </body>
+</html>
