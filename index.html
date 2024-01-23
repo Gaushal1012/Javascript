@@ -3,150 +3,112 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Javacscript</title>
+    <title>User Registration Form</title>
     <link rel="stylesheet" href="./style.css" />
-    <script src="./app.js"></script>
   </head>
   <body>
     <div class="container">
-      <div class="form-part">
-        <form action="#">
-          <div class="form-group">
-            <label for="fname">First Name: </label>
-            <input type="text" id="fname" />
-          </div>
-          <div class="form-group">
-            <label for="lname">Last Name: </label>
-            <input type="text" id="lname" />
-          </div>
-          <div class="form-group">
-            <label for="mno">Mobile No: </label>
-            <input type="number" id="m_no" />
-          </div>
-          <div class="form-group">
-            <label for="email">Email: </label>
-            <input type="email" id="email" />
-          </div>
-          <div class="form-group">
-            <label for="gen">Gender: </label>
-            <section>
-              <input type="radio" id="male" value="Male" name="gen" />
-              <label for="male">Male</label>
-              <input type="radio" id="female" value="Female" name="gen" />
-              <label for="female">Female</label>
-            </section>
-          </div>
-          <div class="form-group">
-            <label for="hob">Hobbies: </label>
-            <section>
-              <input type="checkbox" id="reading" value="Reading" name="hob" />
-              <label for="reading">Reading</label>
-              <input type="checkbox" id="playing" value="Playing" name="hob" />
-              <label for="playing">Playing</label>
-              <input
-                type="checkbox"
-                id="watchingTV"
-                value="watchingTV"
-                name="hob"
-              />
-              <label for="watchingTV">Watching TV</label>
-            </section>
-          </div>
-          <div class="form-group">
-            <label for="country">Country</label>
-            <select id="country">
-              <option value="India">India</option>
-              <option value="Australia">Australia</option>
-              <option value="Canada">Canada</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="state">State</label>
-            <select id="state">
-              <option value="Gujarat">Gujarat</option>
-              <option value="Maharashtra">Maharashtra</option>
-              <option value="Rajsthan">Rajsthan</option>
-              <option value="Bihar">Bihar</option>
-              <option value="Delhi">Delhi</option>
-              <option value="Goa">Goa</option>
-              <option value="Queensland">Queensland</option>
-              <option value="Tasmania">Tasmania</option>
-              <option value="New South Wales">New South Wales</option>
-              <option value="Victoria">Victoria</option>
-              <option value="Western Australia">Western Australia</option>
-              <option value="South Australia">South Australia</option>
-              <option value="Ontario">Ontario</option>
-              <option value="Alberta">Alberta</option>
-              <option value="British Columbia">British Columbia</option>
-              <option value="Quebec">Quebec</option>
-              <option value="Monitoba">Monitoba</option>
-            </select>
-          </div>
-        </form>
+      <h2 style="color: green">Registration Form</h2>
+      <form id="registrationForm" onsubmit="submitForm(event)">
         <div class="form-group">
-          <button type="submit" onclick="displayInfo()">Save</button>
-          <!-- <input type="submit" onclick="displayInfo()" /> -->
+          <label for="firstName">First Name:</label>
+          <input type="text" id="firstName" name="firstName" required />
         </div>
+
+        <div class="form-group">
+          <label for="lastName">Last Name:</label>
+          <input type="text" id="lastName" name="lastName" required />
+        </div>
+
+        <div class="form-group">
+          <label for="mobileNo">Mobile No:</label>
+          <input type="mobileNo" id="mobileNo" name="mobileNo" required />
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required />
+        </div>
+
+        <div class="gender form-group">
+          <label for="gender">Gender:</label>
+          <div class="male">
+            <input type="radio" class="gender" name="gender" value="male" />
+            <label for="male">Male</label>
+          </div>
+          <div class="female">
+            <input type="radio" class="gender" name="gender" value="female" />
+            <label for="female">Female</label>
+          </div>
+        </div>
+
+        <div class="hobby form-group">
+          <label for="hobbies">Hobbies: </label>
+          <div>
+            <input type="checkbox" id="hobby" name="hobbies" value="Reading" />
+            <label for="hobby">Reading</label>
+          </div>
+
+          <div>
+            <input type="checkbox" id="hobby" name="hobbies" value="Gaming" />
+            <label for="hobby">Playing</label>
+          </div>
+
+          <div>
+            <input
+              type="checkbox"
+              id="hobby"
+              name="hobbies"
+              value="Traveling"
+            />
+            <label for="hobby">Watching TV</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="country">Country:</label>
+          <select id="country" onchange="updateStateDropdown()" name="country">
+            <option value="">--Select a Country--</option>
+            <option value="India">India</option>
+            <option value="Australia">Australia</option>
+            <option value="Canada">Canada</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="state">State:</label>
+          <select id="state" name="state">
+            <option value="">--Select a State--</option>
+          </select>
+        </div>
+
+        <div class="button form-group">
+          <button class="btn submitbtn" type="submit">Submit</button>
+          <button class="btn clearbtn" onclick="clearForm()">Clear</button>
+        </div>
+      </form>
+
+      <div class="displayData">
+        <table id="userData">
+          <thead id="tableHead">
+            <tr>
+              <th>Full Name</th>
+              <th>Mobile No</th>
+              <th>Email</th>
+              <th>Gender</th>
+              <th>Hobbies</th>
+              <th>Country</th>
+              <th>State</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="tableBody">
+            <!-- Form Data  -->
+          </tbody>
+        </table>
       </div>
     </div>
-    <div id="display-part">Information display here</div>
+
+    <script src="./app.js"></script>
   </body>
-  <script>
-    let fname = document.getElementById("fname");
-      let lname = document.getElementById("lname");
-      let m_no = document.getElementById("m_no");
-      let email = document.getElementById("email");
-      let gen = document.getElementsByName("gen");
-      let hobbies = document.getElementsByName("hob");
-      let country = document.getElementById("country");
-      let state = document.getElementById("state");
-
-      function gender() {
-        for (let element of gen) {
-          if (element.checked) {
-            return element.value;
-          }
-        }
-      }
-
-      function Hobbies() {
-        for (const element of hobbies) {
-          if (element.checked) {
-            return element.value;
-          }
-        }
-      }
-
-      let display = document.getElementById("display-part");
-
-      function displayInfo(e) {
-        display.innerHTML = `
-  <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Contact No</th>
-          <th>Email Id</th>
-          <th>Gender</th>
-          <th>Hobbies</th>
-          <th>Country</th>
-          <th>State</th>
-          <th>Edit/Delete</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>${fname.value}${lname.value}</td>
-          <td>${m_no.value}</td>
-          <td>${email.value}</td>
-          <td>${gender()}</td>
-          <td>${Hobbies()}</td>
-          <td>${country.value}</td>
-          <td>${state.value}</td>
-        </tr>
-      </tbody>
-    </table>
-  `;
-      }
-  </script>
 </html>
